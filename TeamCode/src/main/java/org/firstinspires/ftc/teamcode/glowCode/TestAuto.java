@@ -18,7 +18,7 @@ public class TestAuto extends LinearOpMode{
         org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive drives = new org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive(hardwareMap);
 
         VuforiaStuff.elementPos pos;
-        pos = robot.vuforiaStuff.vuforiascan(true, false);
+        //pos = robot.vuforiaStuff.vuforiascan(true, false);
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
