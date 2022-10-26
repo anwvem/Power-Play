@@ -9,6 +9,8 @@ import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
 
+//from https://github.com/KookyBotz/PowerPlaySleeveDetection/blob/main/SleeveDetection.java
+
 public class SleeveDetection extends OpenCvPipeline {
     /*
     YELLOW  = Parking Left
