@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.glowCode;
+/*package org.firstinspires.ftc.teamcode.glowCode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -25,12 +25,12 @@ public class RedCameraAuto extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
-        /*Lindsey Added line to make auto*/
-        robot.init(hardwareMap);
+        Lindsey Added line to make auto
+       robot.init(hardwareMap);
         org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive drives = new org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive(hardwareMap);
-        /*End*/
+        End
 
-        /** Wait for the game to begin */
+         Wait for the game to begin
         telemetry.addData(">", "Press Play to start op mode");
         telemetry.update();
         waitForStart();
@@ -279,14 +279,14 @@ public class RedCameraAuto extends LinearOpMode {
                     robot.driveAtDirection(90, 600, .3);
                     break;
 
-                     */
+
 
 
             }
 
         }
     }
-}
+}*/
 
 
 
