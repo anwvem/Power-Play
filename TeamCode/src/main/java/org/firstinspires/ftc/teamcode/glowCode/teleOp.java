@@ -82,11 +82,11 @@ public class teleOp extends OpMode {
         robot.rightRear.setPower(gamepad1RightX);
 
         //robot.carouselArm.setPower(gamepad2.left_trigger);
-        robot.carouselArm.setPower(gamepad2.right_stick_x);
-        robot.clawArm.setPower(gamepad2.left_stick_y * .3);
+        //robot.carouselArm.setPower(gamepad2.right_stick_x);
+        //robot.clawArm.setPower(gamepad2.left_stick_y * .3);
         //robot.carouselArm.setPower(gamepad2.right_trigger);
 
-        robot.claw.setPosition(gamepad2.right_trigger);
+        //robot.claw.setPosition(gamepad2.right_trigger);
         /* Telemetry for debugging  */
         //telemetry.addData("Joy XL YL XR", String.format("%.2f", gamepad1LeftX) + " " +
         // String.format("%.2f", gamepad1LeftY) + " " + String.format("%.2f", gamepad1RightX));

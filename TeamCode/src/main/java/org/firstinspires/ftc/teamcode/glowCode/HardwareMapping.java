@@ -24,11 +24,11 @@ import java.util.List;
 public class HardwareMapping {
 
     /* Public OpMode members. */
-    public DcMotor carouselArm = null;
-    public DcMotor clawArm = null;
+    //public DcMotor carouselArm = null;
+    //public DcMotor clawArm = null;
     //public DcMotor intake = null;
     //public DcMotor wobbleLift = null;
-    public Servo claw = null;
+    //public Servo claw = null;
     //public Servo ArmServo = null;
     //public Servo liftServo = null;
 
@@ -76,11 +76,11 @@ public class HardwareMapping {
 /*End Copied out of SampleMecanumDrive*/
 
         // Define and Initialize Motors
-        carouselArm = hwMap.get(DcMotorEx.class, "carouselArm");
-        clawArm = hwMap.get(DcMotorEx.class, "clawArm");
+        //carouselArm = hwMap.get(DcMotorEx.class, "carouselArm");
+        //clawArm = hwMap.get(DcMotorEx.class, "clawArm");
         //intake = hwMap.get(DcMotorEx.class, "intake");
         //wobbleLift = hwMap.get(DcMotorEx.class, "wobbleLift");
-        clawArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //clawArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -99,13 +99,13 @@ public class HardwareMapping {
         //wobbleLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Define and initialize ALL installed servos.
-        claw = hwMap.get(Servo.class, "claw");
+        //claw = hwMap.get(Servo.class, "claw");
         //ArmServo = hwMap.get(Servo.class, "ArmServo");
         //liftServo = hwMap.get(Servo.class, "liftServo");
 
         // set the digital channel to input.
         //touchSensor.setMode(DigitalChannel.Mode.INPUT);
-        claw.setPosition(0);
+        //claw.setPosition(0);
         //ArmServo.setPosition(0.80);
         //liftServo.setPosition(0.05);
         /*clampServo.setPosition(0.35);*/
