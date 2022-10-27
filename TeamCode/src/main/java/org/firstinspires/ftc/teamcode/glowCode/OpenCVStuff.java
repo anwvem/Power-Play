@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.glowCode;
+/*package org.firstinspires.ftc.teamcode.glowCode;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,3 +15,4 @@ import org.opencv.imgproc.Imgproc;
 public class OpenCVStuff {
 
 }
+ */

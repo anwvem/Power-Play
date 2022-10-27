@@ -20,7 +20,7 @@ import com.qualcomm.robotcore.util.Range;
 public class TestTeleOp extends OpMode {
     private final HardwareMapping robot = new HardwareMapping();
 
-    double slow = 1;
+    private double slow = 1;
 
     @Override
     public void init() {

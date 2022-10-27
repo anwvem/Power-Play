@@ -19,7 +19,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class teleOp extends OpMode {
     private final HardwareMapping robot = new HardwareMapping();
 
-    double slow = 1;
+    private double slow = 1;
 
     @Override
     public void init() {

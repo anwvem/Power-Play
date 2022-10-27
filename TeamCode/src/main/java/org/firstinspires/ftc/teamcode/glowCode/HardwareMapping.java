@@ -180,6 +180,12 @@ public class HardwareMapping {
         double LeftYMotorFix = -1;
         double LeftXMotorFix = -1;
         double RightXMotorFix = -1;
+        int move = (int) driveDistance;
+
+        leftRear.setTargetPosition(leftRear.getCurrentPosition()+move);
+        rightRear.setTargetPosition(rightRear.getCurrentPosition()+move);
+        leftFront.setTargetPosition(leftFront.getCurrentPosition()+move);
+        rightFront.setTargetPosition(rightFront.getCurrentPosition()+move);
         rightRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         leftRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);

@@ -12,8 +12,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 public class IMU {
 
-    BNO055IMU imu;
-    Orientation angles;
+    private BNO055IMU imu;
+    private Orientation angles;
 
     public IMU(BNO055IMU imu) {
         this.imu = imu;

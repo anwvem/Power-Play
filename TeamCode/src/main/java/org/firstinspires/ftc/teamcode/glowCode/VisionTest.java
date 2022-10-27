@@ -11,9 +11,9 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 @Autonomous(name = "Signal Sleeve Test")
 public class VisionTest extends LinearOpMode {
 
-    SleeveDetection sleeveDetection = new SleeveDetection();
-    OpenCvCamera camera;
-    String webcamName = "Webcam 1";
+    private SleeveDetection sleeveDetection = new SleeveDetection();
+    private OpenCvCamera camera;
+    private String webcamName = "Webcam 1";
 
     @Override
     public void runOpMode() throws InterruptedException {
