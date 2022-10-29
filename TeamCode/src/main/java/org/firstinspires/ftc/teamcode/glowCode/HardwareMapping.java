@@ -105,7 +105,7 @@ public class HardwareMapping {
 
         // set the digital channel to input.
         //touchSensor.setMode(DigitalChannel.Mode.INPUT);
-        claw.setPosition(0.5);
+        claw.setPosition(0);
         //ArmServo.setPosition(0.80);
         //liftServo.setPosition(0.05);
         /*clampServo.setPosition(0.35);*/

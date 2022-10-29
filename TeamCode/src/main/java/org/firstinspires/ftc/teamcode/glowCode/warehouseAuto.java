@@ -54,7 +54,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
             drives.turn(-90);
 
             */
-                robot.driveAtDirection(0,2200,0.05);
+                robot.driveAtDirection(45,2200,0.3);
 
 
 

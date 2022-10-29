@@ -53,7 +53,7 @@ public class TestTeleOp extends OpMode {
             // right stick X controls rotation
             double gamepad1LeftY = -(gamepad1.left_stick_y)  * slow;
             double gamepad1LeftX = gamepad1.left_stick_x  * slow;
-            double gamepad1RightX = gamepad1.right_stick_x  * slow;
+            double gamepad1RightX= gamepad1.right_stick_x  * slow;
             //double gamepad2LeftY = -gamepad1.left_stick_y * .7 * slow;
 
 
@@ -80,8 +80,8 @@ public class TestTeleOp extends OpMode {
             robot.leftRear.setPower(BackLeft);
             robot.rightRear.setPower(BackRight);
 
-            robot.turretArm.setPower(gamepad2.right_stick_y);
-            robot.clawArm.setPower(gamepad2.left_stick_y * .3);
+            robot.turretArm.setPower(gamepad2.left_stick_y);
+            robot.clawArm.setPower(gamepad2.left_stick_x * .3);
             robot.claw.setPosition(gamepad2.right_stick_x);
 
 
