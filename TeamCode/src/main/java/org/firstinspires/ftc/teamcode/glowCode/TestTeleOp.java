@@ -51,9 +51,9 @@ public class TestTeleOp extends OpMode {
 
             // left stick controls direction
             // right stick X controls rotation
-            double gamepad1LeftY = (gamepad1.left_stick_y)  * slow;
-            double gamepad1LeftX = -gamepad1.left_stick_x  * slow;
-            double gamepad1RightX = -gamepad1.right_stick_x  * slow;
+            double gamepad1LeftY = -(gamepad1.left_stick_y)  * slow;
+            double gamepad1LeftX = gamepad1.left_stick_x  * slow;
+            double gamepad1RightX = gamepad1.right_stick_x  * slow;
             //double gamepad2LeftY = -gamepad1.left_stick_y * .7 * slow;
 
 
@@ -80,20 +80,21 @@ public class TestTeleOp extends OpMode {
             robot.leftRear.setPower(BackLeft);
             robot.rightRear.setPower(BackRight);
 
-            //robot.carouselArm.setPower(gamepad2.left_trigger);
-            //robot.carouselArm.setPower(gamepad2.right_stick_x);
-            //robot.clawArm.setPower(gamepad2.left_stick_y * .3);
-            //robot.carouselArm.setPower(gamepad2.right_trigger);
+            robot.turretArm.setPower(gamepad2.right_stick_y);
+            robot.clawArm.setPower(gamepad2.left_stick_y * .3);
+            robot.claw.setPosition(gamepad2.right_stick_x);
+
 
             //robot.claw.setPosition(gamepad2.right_trigger);
             /* Telemetry for debugging  */
-            //telemetry.addData("Joy XL YL XR", String.format("%.2f", gamepad1LeftX) + " " +
-                   // String.format("%.2f", gamepad1LeftY) + " " + String.format("%.2f", gamepad1RightX));
-            //telemetry.addData("Stick", gamepad1.right_stick_y);
+            telemetry.addData("Joy XL YL XR", String.format("%.2f", gamepad1LeftX) + " " +
+                   String.format("%.2f", gamepad1LeftY) + " " + String.format("%.2f", gamepad1RightX));
+            telemetry.addData("Stick", gamepad1.right_stick_y);
             telemetry.addData("Encoders:", String.format("%d",robot.leftFront.getCurrentPosition()) + " " +
                             String.format("%d",robot.rightFront.getCurrentPosition()) + " " +
                             String.format("%d",robot.leftRear.getCurrentPosition()) + " " +
                             String.format("%d",robot.rightRear.getCurrentPosition()) );
                     telemetry.update();
+
     }
 }
