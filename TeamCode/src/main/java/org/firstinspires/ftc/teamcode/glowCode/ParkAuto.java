@@ -4,18 +4,14 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
   @Autonomous
-    public class warehouseAuto extends LinearOpMode {
+    public class ParkAuto extends LinearOpMode {
         private final HardwareMapping robot = new HardwareMapping();
 
-        //SampleMecanumDrive drives = new SampleMecanumDrive(hardwareMap);
-        //VuforiaStuff.elementPos pos;
 
         @Override
         public void runOpMode() throws InterruptedException {
             robot.init(hardwareMap);
-            //org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive drives = new org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive(hardwareMap);
 
-            //pos = robot.vuforiaStuff.vuforiascan(true, false);
             telemetry.addData("Status", "Initialized");
             telemetry.update();
 

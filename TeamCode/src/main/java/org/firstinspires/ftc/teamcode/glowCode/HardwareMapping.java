@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.glowCode;
 
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
@@ -16,6 +17,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.teamcode.util.AxesSigns;
+import org.firstinspires.ftc.teamcode.util.BNO055IMUUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,19 +29,7 @@ public class HardwareMapping {
     /* Public OpMode members. */
     public DcMotor turretArm = null;
     public DcMotor clawArm = null;
-    //public DcMotor intake = null;
-    //public DcMotor wobbleLift = null;
-    public Servo claw = null;
-    //public Servo ArmServo = null;
-    //public Servo liftServo = null;
-
-
-    /* This is Vuforia, so it is cleared out
-
-    public VuforiaStuff vuforiaStuff;
-    private VuforiaLocalizer vuforia;
-    private static final String VUFORIA_KEY = "Ac5oJT3/////AAABmaqjC8BtVEdCqJ9KEctcjrJjRRHPEsjVpJWvESCluMdAjHDqmXj1hS15xQ/ZC19fWDvWS+synqHGRqZmXH+i3WbN2DElVFCs667s5+7HrgrsLzKbbqTtHbaKah5ZHKj8Oh5JGQf+2+glYSNej8y5tcU72ThLn/yWFirimoywB7MCwbvsyBNEr+QHMwSMrf6lqVxFBR+EF+XRAXRCoADqVupPYsngQsb7GsCW7tnfavRhonHStOqq4co+pqqrRrpFOKgXGzzXUzrlDafduiU4UulaCZXf6NzIAuO3e2rVv39LZW6hom6L/sYatfWHgmgOjR3a6/+EKonhIj6LhGSmMaFvDAoeTiMObtQFvy2IbfKh";
-    */
+    public CRServo claw = null;
 
 
     /* local OpMode members. */
@@ -65,7 +56,7 @@ public class HardwareMapping {
 
         // TODO: if your hub is mounted vertically, remap the IMU axes so that the z-axis points
         // upward (normal to the floor) using a command like the following:
-        // BNO055IMUUtil.remapAxes(imu, AxesOrder.XYZ, AxesSigns.NPN);
+        BNO055IMUUtil.remapAxes(imu, AxesOrder.XYZ, AxesSigns.NPN);
 
         leftFront = hwMap.get(DcMotorEx.class, "leftFront");
         leftRear = hwMap.get(DcMotorEx.class, "leftRear");
@@ -78,77 +69,26 @@ public class HardwareMapping {
         // Define and Initialize Motors
         turretArm = hwMap.get(DcMotorEx.class, "turretArm");
         clawArm = hwMap.get(DcMotorEx.class, "clawArm");
-        //intake = hwMap.get(DcMotorEx.class, "intake");
-        //wobbleLift = hwMap.get(DcMotorEx.class, "wobbleLift");
         clawArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-       //rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-       //leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);      // Set all motors to zero power
-       //rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    //shooterRight.setPower(0);
-       //leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);     //shooterLeft.setPower(0);
-        //intake.setPower(0);
-        //wobbleLift.setPower(0);
-        //sonia test
-        //wobbleLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //wobbleLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        //wobbleLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Define and initialize ALL installed servos.
-        claw = hwMap.get(Servo.class, "claw");
-        //ArmServo = hwMap.get(Servo.class, "ArmServo");
-        //liftServo = hwMap.get(Servo.class, "liftServo");
+        claw = hwMap.get(CRServo.class, "claw");
 
-        // set the digital channel to input.
-        //touchSensor.setMode(DigitalChannel.Mode.INPUT);
+        /*
+         set the digital channel to input.
         claw.setPosition(0);
-        //ArmServo.setPosition(0.80);
-        //liftServo.setPosition(0.05);
-        /*clampServo.setPosition(0.35);*/
 
-        //WebcamName webcamName;
-        //webcamName = hwMap.get(WebcamName.class, "Webcam");
-
-
-        //vuforia things
-       /* int cameraMonitorViewId = hwMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hwMap.appContext.getPackageName());
-        VuforiaLocalizer.Parameters parametersV = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
-        parametersV.vuforiaLicenseKey = VUFORIA_KEY;
-        parametersV.cameraName = webcamName;
-        //  Instantiate the Vuforia engine
-        vuforia = ClassFactory.getInstance().createVuforia(parametersV);
-        vuforiaStuff = new VuforiaStuff(vuforia);
-
+        WebcamName webcamName;
+        webcamName = hwMap.get(WebcamName.class, "Webcam");
         */
 
-
-
-
     }
 
-    /*public void armOut(double armDistance, double armPower) {
-        double armPosition = wobbleLift.getCurrentPosition();
-        while (Math.abs(armPosition - wobbleLift.getCurrentPosition()) < armDistance) {
-            wobbleLift.setPower(armPower);
-
-        }
-        wobbleLift.setPower(0);
-    }*/
-  /*  public void flickRings(int power) {
-        carouselArm.setPower(power);od
-        ElapsedTime runtime2 = new ElapsedTime();
-        while(runtime2.milliseconds() < 4000){
-            if (runtime2.milliseconds() > 1000) {
-                carouselArm.setPower(power);
-
-            }
-        }
-    }
-   */
     public void moveToPosition(double driveDistance, double speed) {
          int move = (int) driveDistance;
 
@@ -163,9 +103,7 @@ public class HardwareMapping {
 
           leftRear.setPower(speed);
                     rightRear.setPower(speed);
-
                               leftFront.setPower(speed);
-
                                         rightFront.setPower(speed);
            while (leftRear.isBusy()&&leftFront.isBusy()&&rightFront.isBusy()&&rightRear.isBusy()) {
 
@@ -173,7 +111,7 @@ public class HardwareMapping {
            leftRear.setPower(0);
                      rightRear.setPower(0);
                                rightFront.setPower(0);
-                               leftFront.setPower(0);
+                                        leftFront.setPower(0);
 
     }
     public void driveAtDirection(double AngleIn, double driveDistance, double motorPower) {
@@ -194,7 +132,7 @@ public class HardwareMapping {
         double frontLeftStart = leftRear.getCurrentPosition();
         double frontRightStart = rightRear.getCurrentPosition();
 
-        double startingHeading = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle;;
+        double startingHeading = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle;
         //double startingHeading = 0;
 
         while (Math.sqrt(Math.pow((leftRear.getCurrentPosition() - frontLeftStart),2)+Math.pow((rightRear.getCurrentPosition()-frontRightStart),2)) < driveDistance) {
@@ -287,8 +225,7 @@ public class HardwareMapping {
         leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         double frontLeftStart = leftRear.getCurrentPosition();
 
-        while (Math.abs(leftRear.getCurrentPosition() - frontLeftStart)
-                < driveDistanceLeft) {
+        while (Math.abs(leftRear.getCurrentPosition() - frontLeftStart) < driveDistanceLeft) {
             double RightX = -motorPowerLeft;
 
             // write the values to the motors
