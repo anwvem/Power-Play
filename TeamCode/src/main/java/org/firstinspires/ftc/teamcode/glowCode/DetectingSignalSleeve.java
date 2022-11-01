@@ -1,11 +1,6 @@
-/*ackage org.firstinspires.ftc.teamcode.glowCode;
+package org.firstinspires.ftc.teamcode.glowCode;
 
-import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.videoio.VideoCapture;
-
-import java.awt.image.BufferedImage;
+/*import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
 import java.io.FileNotFoundException;
