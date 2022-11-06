@@ -43,7 +43,7 @@ public class OpenCVStuff {
         return contour.get(largestContour);
     }
 
-    public static int detectNumber(Mat inputtedImage){
+    public static int detectNumber(Mat inputtedImage) {
         Mat image1 = Imgcodecs.imread("![](../../../../../../../../../FtcRobotController/src/main/assets/IMG_2811.jpg)");
         Mat image2 = Imgcodecs.imread("![](../../../../../../../../../FtcRobotController/src/main/assets/IMG_2810.jpg)");
         Mat image3 = Imgcodecs.imread("![](../../../../../../../../../FtcRobotController/src/main/assets/IMG_2812.jpg)");
@@ -59,8 +59,8 @@ public class OpenCVStuff {
         Imgproc.findContours(edgedImage, contours, hierarchy, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
         final int magicNumber = 100;
         for (int i = 0; i < contours.size(); i++) {
-            if (Imgproc.contourArea(contours.get(i))  > magicNumber) {
-                if ((Imgproc.matchShapes(Imgproc.contourArea(contours.get(i)),contour1, Imgproc.CONTOURS_MATCH_I1, 1)) < 0.5) {
+            if (Imgproc.contourArea(contours.get(i)) > magicNumber) {
+                if ((Imgproc.matchShapes((contours.get(i)), contour1, Imgproc.CONTOURS_MATCH_I1, 1)) < 0.5) {
 
                 }
             }
