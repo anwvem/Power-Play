@@ -14,9 +14,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
 
 //this will be used later
 public class OpenCVStuff {
+    private final HardwareMapping robot = new HardwareMapping();
 
     public static Mat makeEdged(Mat inputMat) {
         Mat grayscaleImage = new Mat();
@@ -50,9 +54,9 @@ public class OpenCVStuff {
         Mat comparableImage1 = makeEdged(image1);
         Mat comparableImage2 = makeEdged(image2);
         Mat comparableImage3 = makeEdged(image3);
-        MatOfPoint contour1 = findLargestContour(comparableImage1);
+        /*MatOfPoint contour1 = findLargestContour(comparableImage1);
         MatOfPoint contour2 = findLargestContour(comparableImage2);
-        MatOfPoint contour3 = findLargestContour(comparableImage3);
+        MatOfPoint contour3 = findLargestContour(comparableImage3);*/
         Mat edgedImage = makeEdged(inputtedImage);
         List<MatOfPoint> contours = new ArrayList<>();
         Mat hierarchy = new Mat();
@@ -60,10 +64,16 @@ public class OpenCVStuff {
         final int magicNumber = 100;
         for (int i = 0; i < contours.size(); i++) {
             if (Imgproc.contourArea(contours.get(i)) > magicNumber) {
-                if ((Imgproc.matchShapes((contours.get(i)), contour1, Imgproc.CONTOURS_MATCH_I1, 1)) < 0.5) {
-
+                if (Imgproc.matchShapes(edgedImage, comparableImage1, 1, 1) < 0.5) {
+                    return 1;
+                } else if (Imgproc.matchShapes(edgedImage, comparableImage2, 1, 1) < 0.5) {
+                    return 2;
+                } else if (Imgproc.matchShapes(edgedImage, comparableImage3, 1, 1) < 0.5) {
+                    return 3;
                 }
+                return 4;
             }
         }
+        return 0;
     }
 }

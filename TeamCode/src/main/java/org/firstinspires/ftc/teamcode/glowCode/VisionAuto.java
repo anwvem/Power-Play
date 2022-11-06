@@ -18,7 +18,6 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 public class VisionAuto extends LinearOpMode {
     private final HardwareMapping robot = new HardwareMapping();
 
-
     OpenCvCamera camera;
 
 
