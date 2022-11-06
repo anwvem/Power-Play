@@ -19,7 +19,6 @@ class VisionAuto extends LinearOpMode {
         waitForStart();
         if (opModeIsActive()) {
             //int direction = OpenCVStuff.detectNumber();
-            robot.driveAtDirection(45,2200,0.3);
 
 
 

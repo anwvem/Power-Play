@@ -13,7 +13,7 @@ public class VisionTest extends LinearOpMode {
 
     private SleeveDetection sleeveDetection = new SleeveDetection();
     private OpenCvCamera camera;
-    private String webcamName = "Webcam 1";
+    private String webcamName = "Webcam";
 
     @Override
     public void runOpMode() throws InterruptedException {
