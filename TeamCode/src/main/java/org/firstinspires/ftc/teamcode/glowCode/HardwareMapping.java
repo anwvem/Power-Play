@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.glowCode;
 
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
+
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
@@ -12,13 +14,16 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
-//import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.util.AxesSigns;
 import org.firstinspires.ftc.teamcode.util.BNO055IMUUtil;
+
+import org.openftc.easyopencv.OpenCvCamera;
+import org.openftc.easyopencv.OpenCvCameraFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -79,13 +84,11 @@ public class HardwareMapping {
         // Define and initialize ALL installed servos.
         claw = hwMap.get(CRServo.class, "claw");
 
-        /*
-         set the digital channel to input.
-        claw.setPosition(0);
 
-        WebcamName webcamName;
-        webcamName = hwMap.get(WebcamName.class, "Webcam");
-        */
+        // set the digital channel to input.
+        //claw.setPosition(0);
+
+        WebcamName webcamName = hwMap.get(WebcamName.class, "Webcam");
 
     }
 
