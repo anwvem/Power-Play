@@ -74,9 +74,9 @@ public class MecTeleOp extends OpMode {
             robot.leftRear.setPower(BackLeft);
             robot.rightRear.setPower(BackRight);
 
-            robot.turretArm.setPower(-gamepad2.left_stick_y);
-            robot.clawArm.setPower(gamepad2.left_stick_x / 3);
-            robot.claw.setPower(gamepad2.right_stick_x);
+            //robot.turretArm.setPower(-gamepad2.left_stick_y);
+            //robot.clawArm.setPower(gamepad2.left_stick_x / 3);
+            //robot.claw.setPower(gamepad2.right_stick_x);
 
 
             //robot.claw.setPosition(gamepad2.right_trigger);

@@ -1,4 +1,5 @@
-package org.firstinspires.ftc.teamcode.glowCode;
+package org.firstinspires.ftc.teamcode.glowCode.CameraAuto;
+
 
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 
@@ -9,6 +10,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.glowCode.HardwareMapping;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
@@ -19,7 +21,7 @@ public class VisionAuto extends LinearOpMode {
     private final HardwareMapping robot = new HardwareMapping();
 
     OpenCvCamera camera;
-
+    EOAprilTags tagOfInterest;
 
     public void runOpMode() throws InterruptedException {
 
@@ -49,7 +51,6 @@ public class VisionAuto extends LinearOpMode {
                      */
                 }
             });
-            //int direction = OpenCVStuff.detectNumber();
 
 
 

@@ -1,26 +1,29 @@
-package org.firstinspires.ftc.teamcode.glowCode;
-
-import android.media.ImageWriter;
+package org.firstinspires.ftc.teamcode.glowCode.CameraAuto;
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
 import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.utils.Converters;
 import org.opencv.core.Size;
-import org.opencv.core.Core;
 import org.opencv.imgproc.Imgproc;
+import org.openftc.easyopencv.OpenCvPipeline;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+//import org.firstinspires.ftc.teamcode.glowCode.CameraAuto.OpenCVStuff;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+public class OCVPipeline extends OpenCvPipeline {
+   static int lastResult;
 
 
-//this will be used later
-public class OpenCVStuff {
-    private final HardwareMapping robot = new HardwareMapping();
+    @Override
+    public Mat processFrame(Mat input)
+    {
+        Mat returnMat = detectNumber(input);
+        return returnMat;
+
+    }
+
+
 
     public static Mat makeEdged(Mat inputMat) {
         Mat grayscaleImage = new Mat();
@@ -47,7 +50,7 @@ public class OpenCVStuff {
         return contour.get(largestContour);
     }
 
-    public static int detectNumber(Mat inputtedImage) {
+    public static Mat detectNumber(Mat inputtedImage) {
         Mat image1 = Imgcodecs.imread("![](../../../../../../../../../FtcRobotController/src/main/assets/IMG_2811.jpg)");
         Mat image2 = Imgcodecs.imread("![](../../../../../../../../../FtcRobotController/src/main/assets/IMG_2810.jpg)");
         Mat image3 = Imgcodecs.imread("![](../../../../../../../../../FtcRobotController/src/main/assets/IMG_2812.jpg)");
@@ -65,15 +68,24 @@ public class OpenCVStuff {
         for (int i = 0; i < contours.size(); i++) {
             if (Imgproc.contourArea(contours.get(i)) > magicNumber) {
                 if (Imgproc.matchShapes(edgedImage, comparableImage1, 1, 1) < 0.5) {
-                    return 1;
+                    lastResult=1;
+                    return edgedImage;
                 } else if (Imgproc.matchShapes(edgedImage, comparableImage2, 1, 1) < 0.5) {
-                    return 2;
+                   lastResult =2;
+                    return edgedImage;
                 } else if (Imgproc.matchShapes(edgedImage, comparableImage3, 1, 1) < 0.5) {
-                    return 3;
+                    lastResult = 3;
+                    return edgedImage;
                 }
-                return 4;
+                return edgedImage;
             }
         }
-        return 0;
+        return edgedImage;
+    }
+
+    public int getLatestResults()
+    {
+        return lastResult;
     }
 }
+

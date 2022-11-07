@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.glowCode;
+package org.firstinspires.ftc.teamcode.glowCode.CameraAuto;
 
 /*import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;

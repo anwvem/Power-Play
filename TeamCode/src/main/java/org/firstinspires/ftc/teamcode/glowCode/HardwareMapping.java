@@ -32,9 +32,9 @@ import java.util.List;
 public class HardwareMapping {
 
     /* Public OpMode members. */
-    public DcMotor turretArm = null;
-    public DcMotor clawArm = null;
-    public CRServo claw = null;
+    //public DcMotor turretArm = null;
+    //public DcMotor clawArm = null;
+    //public CRServo claw = null;
 
 
     /* local OpMode members. */
@@ -72,9 +72,9 @@ public class HardwareMapping {
 /*End Copied out of SampleMecanumDrive*/
 
         // Define and Initialize Motors
-        turretArm = hwMap.get(DcMotorEx.class, "turretArm");
-        clawArm = hwMap.get(DcMotorEx.class, "clawArm");
-        clawArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //turretArm = hwMap.get(DcMotorEx.class, "turretArm");
+        //clawArm = hwMap.get(DcMotorEx.class, "clawArm");
+        //clawArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -82,13 +82,13 @@ public class HardwareMapping {
 
 
         // Define and initialize ALL installed servos.
-        claw = hwMap.get(CRServo.class, "claw");
+        //claw = hwMap.get(CRServo.class, "claw");
 
 
         // set the digital channel to input.
         //claw.setPosition(0);
 
-        WebcamName webcamName = hwMap.get(WebcamName.class, "Webcam");
+        WebcamName webcamName = hwMap.get(WebcamName.class, "Webcam 1");
 
     }
 
