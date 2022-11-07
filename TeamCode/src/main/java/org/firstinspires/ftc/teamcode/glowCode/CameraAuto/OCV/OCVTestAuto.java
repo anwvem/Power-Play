@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.glowCode.CameraAuto;
+package org.firstinspires.ftc.teamcode.glowCode.CameraAuto.OCV;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
