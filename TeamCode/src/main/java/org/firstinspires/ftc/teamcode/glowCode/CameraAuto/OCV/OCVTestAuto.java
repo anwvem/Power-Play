@@ -17,7 +17,6 @@ import org.openftc.easyopencv.OpenCvPipeline;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.firstinspires.ftc.teamcode.glowCode.CameraAuto.OpenCVStuff;
 
 @TeleOp
 public class OCVTestAuto extends LinearOpMode {
