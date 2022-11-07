@@ -30,26 +30,34 @@ public class RedCamera extends LinearOpMode {
         waitForStart();
 
         if (opModeIsActive()) {
-            telemetry.addData("position",pos);
+            telemetry.addData("position", pos);
             telemetry.update();
             ElapsedTime runtime2 = new ElapsedTime();
             switch (pos) {
 
                 case LEFT:
-                    //move to carousel
+                    //deliver preloaded cone to terminal
+                    robot.driveAtDirection(270, 500, .3);
+                    //park in zone
                     robot.driveAtDirection(0, 100, .3);
-                    robot.driveAtDirection(270, 2000, .3);
                     break;
 
                 case MIDDLE:
+                    //deliver preloaded cone to terminal
+                    robot.driveAtDirection(270, 2000, .3);
+                    //move back to original position
+                    robot.driveAtDirection(90, 2000, .3);
+                    //park in zone
                     robot.driveAtDirection(0, 2000, .3);
                     break;
 
                 case RIGHT:
-                    //move right about a foot
-                    robot.driveAtDirection(90, 500, .3);
-                    robot.driveAtDirection(0, 2800, .3);
-
+                    //deliver preloaded cone to terminal
+                    robot.driveAtDirection(270, 2000, .3);
+                    //move to "right" zone
+                    robot.driveAtDirection(90, 5000, .3);
+                    //park in zone
+                    robot.driveAtDirection(0, 2000, .3);
                     break;
 
 
