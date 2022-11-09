@@ -18,7 +18,6 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import java.util.ArrayList;
 import java.util.List;
 
-@TeleOp
 public class OCVTestAuto extends LinearOpMode {
     int results = OCVPipeline.lastResult;
     private final HardwareMapping robot = new HardwareMapping();

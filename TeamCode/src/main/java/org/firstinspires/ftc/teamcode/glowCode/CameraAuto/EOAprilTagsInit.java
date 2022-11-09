@@ -12,14 +12,10 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import java.util.ArrayList;
 
 @TeleOp
-public class EOAprilTags extends LinearOpMode
+public class EOAprilTagsInit extends LinearOpMode
 {
     OpenCvCamera camera;
     EOAprilPipeline aprilTagDetectionPipeline;
-
-    enum pos{
-        LEFT, MIDDLE, RIGHT;
-    }
 
     static final double FEET_PER_METER = 3.28084;
 
@@ -71,6 +67,7 @@ public class EOAprilTags extends LinearOpMode
          * The INIT-loop:
          * This REPLACES waitForStart!
          */
+
         while (!isStarted() && !isStopRequested())
         {
             ArrayList<AprilTagDetection> currentDetections = aprilTagDetectionPipeline.getLatestDetections();
@@ -81,13 +78,25 @@ public class EOAprilTags extends LinearOpMode
 
                 for(AprilTagDetection tag : currentDetections)
                 {
-                    if(tag.id == LEFT || tag.id == MIDDLE || tag.id == RIGHT)
-                    {
+                    if(tag.id == LEFT) {
+                        tagOfInterest = tag;
+                        tagFound = true;
+                        break;
+                    }
+
+                    if (tag.id == MIDDLE) {
+                        tagOfInterest = tag;
+                        tagFound = true;
+                        break;
+                    }
+
+                    if (tag.id == RIGHT) {
                         tagOfInterest = tag;
                         tagFound = true;
                         break;
                     }
                 }
+
 
                 if(tagFound)
                 {
@@ -151,6 +160,7 @@ public class EOAprilTags extends LinearOpMode
         /* Actually do something useful */
         if(tagOfInterest == null || tagOfInterest.id == LEFT){
             telemetry.addLine("left");
+
             //trajectory
         }else if(tagOfInterest.id == MIDDLE){
             telemetry.addLine("middle");
