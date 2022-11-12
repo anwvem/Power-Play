@@ -21,9 +21,9 @@ public class RedCamera extends LinearOpMode
     //INTRODUCE VARIABLES HERE
 
     enum conePos {
-        LEFT, MIDDLE, RIGHT
+        NULL, LEFT, MIDDLE, RIGHT
     }
-    conePos pos = conePos.LEFT;
+    conePos pos = conePos.NULL;
 
     OpenCvCamera camera;
     EOAprilPipeline aprilTagDetectionPipeline;
@@ -155,34 +155,46 @@ public class RedCamera extends LinearOpMode
 
             case LEFT:
                 //deliver preloaded cone to terminal
-                robot.driveAtDirection(270, 500, .3);
+                robot.driveAtDirection(270, 2000, .3);
                 //park in zone
                 robot.driveAtDirection(0, 100, .3);
                 break;
 
             case MIDDLE:
                 //deliver preloaded cone to terminal
-                robot.driveAtDirection(270, 2000, .3);
+                //robot.driveAtDirection(270, 2000, .3);
                 //move back to original position
-                robot.driveAtDirection(90, 2000, .3);
+                //robot.driveAtDirection(90, 2000, .3);
                 //park in zone
                 robot.driveAtDirection(0, 2000, .3);
                 break;
 
             case RIGHT:
                 //deliver preloaded cone to terminal
-                robot.driveAtDirection(270, 2000, .3);
+                //robot.driveAtDirection(270, 2000, .3);
                 //move to "right" zone
-                robot.driveAtDirection(90, 5000, .3);
+                robot.driveAtDirection(90, 1500, .3);
                 //park in zone
                 robot.driveAtDirection(0, 2000, .3);
                 break;
 
+            case NULL:
+                robot.driveAtDirection(90, 2000, .3);
+
         }
     }
-
-    void tagToTelemetry(AprilTagDetection detection)
-    {
+        void tagToTelemetry(AprilTagDetection detection)
+        {
+            telemetry.addLine(String.format("\nDetected tag ID=%d", detection.id));
+            if (detection.id == 1) {
+                telemetry.addLine(String.format("Left"));
+            }
+            else if (detection.id == 2){
+                telemetry.addLine(String.format("Middle"));
+            }
+            else if (detection.id == 3){
+                telemetry.addLine(String.format("Right"));
+            }
         telemetry.addLine(String.format("\nDetected tag ID=%d", detection.id));
         telemetry.addLine(String.format("Translation X: %.2f feet", detection.pose.x*FEET_PER_METER));
         telemetry.addLine(String.format("Translation Y: %.2f feet", detection.pose.y*FEET_PER_METER));

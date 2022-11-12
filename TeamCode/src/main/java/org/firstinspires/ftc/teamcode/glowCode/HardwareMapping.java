@@ -2,9 +2,11 @@ package org.firstinspires.ftc.teamcode.glowCode;
 
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 
+import com.acmerobotics.roadrunner.util.Angle;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -32,9 +34,9 @@ import java.util.List;
 public class HardwareMapping {
 
     /* Public OpMode members. */
-    //public DcMotor turretArm = null;
+    public DcMotor turretArm = null;
     //public DcMotor clawArm = null;
-    //public CRServo claw = null;
+    public CRServo claw = null;
 
 
     /* local OpMode members. */
@@ -69,10 +71,11 @@ public class HardwareMapping {
         rightFront = hwMap.get(DcMotorEx.class, "rightFront");
 
         motors = Arrays.asList(leftFront, leftRear, rightRear, rightFront);
+
 /*End Copied out of SampleMecanumDrive*/
 
         // Define and Initialize Motors
-        //turretArm = hwMap.get(DcMotorEx.class, "turretArm");
+        turretArm = hwMap.get(DcMotorEx.class, "turretArm");
         //clawArm = hwMap.get(DcMotorEx.class, "clawArm");
         //clawArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -82,7 +85,7 @@ public class HardwareMapping {
 
 
         // Define and initialize ALL installed servos.
-        //claw = hwMap.get(CRServo.class, "claw");
+        claw = hwMap.get(CRServo.class, "claw");
 
 
         // set the digital channel to input.
@@ -123,6 +126,28 @@ public class HardwareMapping {
         double RightXMotorFix = -1;
         int move = (int) driveDistance;
 
+        if (AngleIn == 0) {
+            leftFront.setDirection(DcMotor.Direction.REVERSE);
+            leftRear.setDirection(DcMotor.Direction.REVERSE);
+        }
+        if (AngleIn == 90) {
+            rightFront.setDirection(DcMotor.Direction.REVERSE);
+            leftRear.setDirection(DcMotor.Direction.FORWARD);
+            leftFront.setDirection(DcMotor.Direction.REVERSE);
+        }
+        if (AngleIn == 180) {
+            rightFront.setDirection(DcMotor.Direction.REVERSE);
+            leftRear.setDirection(DcMotor.Direction.FORWARD);
+            rightRear.setDirection(DcMotor.Direction.REVERSE);
+            leftFront.setDirection(DcMotor.Direction.REVERSE);
+        }
+        if (AngleIn == 270) {
+            leftFront.setDirection(DcMotor.Direction.REVERSE);
+            leftRear.setDirection(DcMotor.Direction.REVERSE);
+            rightRear.setDirection(DcMotor.Direction.REVERSE);
+        }
+
+
         leftRear.setTargetPosition(leftRear.getCurrentPosition()+move);
         rightRear.setTargetPosition(rightRear.getCurrentPosition()+move);
         leftFront.setTargetPosition(leftFront.getCurrentPosition()+move);
@@ -135,7 +160,7 @@ public class HardwareMapping {
         double frontLeftStart = leftRear.getCurrentPosition();
         double frontRightStart = rightRear.getCurrentPosition();
 
-        double startingHeading = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle;
+        double startingHeading = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.XYZ, AngleUnit.DEGREES).firstAngle;
         //double startingHeading = 0;
 
         while (Math.sqrt(Math.pow((leftRear.getCurrentPosition() - frontLeftStart),2)+Math.pow((rightRear.getCurrentPosition()-frontRightStart),2)) < driveDistance) {
@@ -147,7 +172,7 @@ public class HardwareMapping {
             LeftX = Math.sin(Math.toRadians(AngleIn))*LeftXMotorFix*motorPower;
             LeftY = Math.cos(Math.toRadians(AngleIn))*LeftYMotorFix*motorPower;
 
-            double currentHeading = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle;
+            double currentHeading = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.XYZ, AngleUnit.DEGREES).firstAngle;
 
             double correctionPower = 0;
             if (Math.abs(currentHeading-startingHeading)<.2){
