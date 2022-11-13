@@ -157,7 +157,7 @@ public class RedCamera extends LinearOpMode
                 //deliver preloaded cone to terminal
                 robot.driveAtDirection(270, 2000, .3);
                 //park in zone
-                robot.driveAtDirection(0, 100, .3);
+                robot.driveAtDirection(0, 2000, .3);
                 break;
 
             case MIDDLE:
@@ -173,13 +173,14 @@ public class RedCamera extends LinearOpMode
                 //deliver preloaded cone to terminal
                 //robot.driveAtDirection(270, 2000, .3);
                 //move to "right" zone
-                robot.driveAtDirection(90, 1500, .3);
+                robot.driveAtDirection(90, 2000, .3);
+                sleep(1000);
                 //park in zone
-                robot.driveAtDirection(0, 2000, .3);
+                robot.driveAtDirection(0, 1500, .3);
                 break;
 
             case NULL:
-                robot.driveAtDirection(90, 2000, .3);
+                robot.driveAtDirection(270, 2000, .3);
 
         }
     }

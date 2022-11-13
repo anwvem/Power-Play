@@ -35,7 +35,10 @@ public class testing extends LinearOpMode {
 
              */
 
-            robot.driveAtDirection(0, 1000, 0.3);
+            robot.driveAtDirection(90, 1500, .3);
+            sleep(1000);
+            //park in zone
+            robot.driveAtDirection(0, 2000, .3);
 
 
 

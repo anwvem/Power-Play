@@ -126,13 +126,17 @@ public class HardwareMapping {
         double RightXMotorFix = -1;
         int move = (int) driveDistance;
 
-        if (AngleIn == 0) {
+        if (AngleIn == 0 || AngleIn == 360) {
             leftFront.setDirection(DcMotor.Direction.REVERSE);
             leftRear.setDirection(DcMotor.Direction.REVERSE);
+            rightRear.setDirection(DcMotor.Direction.FORWARD);
+            rightFront.setDirection(DcMotor.Direction.FORWARD);
         }
+
         if (AngleIn == 90) {
             rightFront.setDirection(DcMotor.Direction.REVERSE);
             leftRear.setDirection(DcMotor.Direction.FORWARD);
+            rightRear.setDirection(DcMotor.Direction.FORWARD);
             leftFront.setDirection(DcMotor.Direction.REVERSE);
         }
         if (AngleIn == 180) {
@@ -145,6 +149,7 @@ public class HardwareMapping {
             leftFront.setDirection(DcMotor.Direction.REVERSE);
             leftRear.setDirection(DcMotor.Direction.REVERSE);
             rightRear.setDirection(DcMotor.Direction.REVERSE);
+            rightFront.setDirection(DcMotor.Direction.FORWARD);
         }
 
 
