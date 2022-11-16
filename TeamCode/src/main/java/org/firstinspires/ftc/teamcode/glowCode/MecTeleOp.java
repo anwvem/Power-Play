@@ -19,8 +19,8 @@ import com.qualcomm.robotcore.util.Range;
 //@Disabled
 public class MecTeleOp extends OpMode {
     private final HardwareMapping robot = new HardwareMapping();
-
-    private double slow = 1;
+    private final double SLOW = 0.75;
+    //private double slow = 1;
 
     @Override
     public void init() {
@@ -45,8 +45,8 @@ public class MecTeleOp extends OpMode {
         */
             // left stick controls direction
             // right stick X controls rotation
-            double gamepad1LeftY = -gamepad1.left_stick_y;
-            double gamepad1LeftX = gamepad1.left_stick_x;
+            double gamepad1LeftY = -gamepad1.left_stick_y * SLOW;
+            double gamepad1LeftX = gamepad1.left_stick_x * SLOW;
             double gamepad1RightX= gamepad1.right_stick_x;
             //double gamepad2LeftY = -gamepad1.left_stick_y * .7 * slow;
 
@@ -81,6 +81,9 @@ public class MecTeleOp extends OpMode {
 
             //robot.claw.setPosition(gamepad2.right_trigger);
             /* Telemetry for debugging  */
+            telemetry.addData("Front Right:", robot.rightFront.isMotorEnabled());
+            telemetry.addData("Rmotor", robot.rightFront.getVelocity());
+            telemetry.addData("Lmotor", robot.leftFront.getVelocity());
             telemetry.addData("Joy XL YL XR", String.format("%.2f", gamepad1LeftX) + " " +
                    String.format("%.2f", gamepad1LeftY) + " " + String.format("%.2f", gamepad1RightX));
             telemetry.addData("Stick", gamepad1.right_stick_y);

@@ -14,7 +14,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import java.util.ArrayList;
 
 @Autonomous
-public class RedCamera extends LinearOpMode
+public class ConeRedCamera extends LinearOpMode
 {
     private final HardwareMapping robot = new HardwareMapping();
 
@@ -157,7 +157,7 @@ public class RedCamera extends LinearOpMode
                 //deliver preloaded cone to terminal
                 robot.driveAtDirection(270, 2000, .3);
                 //park in zone
-                robot.driveAtDirection(0, 1800, .3);
+                robot.driveAtDirection(0, 2000, .3);
                 break;
 
             case MIDDLE:
@@ -166,6 +166,8 @@ public class RedCamera extends LinearOpMode
                 //move back to original position
                 //robot.driveAtDirection(90, 2000, .3);
                 //park in zone
+                robot.driveAtDirection(270, 2000, .3);
+                robot.driveAtDirection(90, 2000, .3);
                 robot.driveAtDirection(0, 2000, .3);
                 break;
 
@@ -173,8 +175,8 @@ public class RedCamera extends LinearOpMode
                 //deliver preloaded cone to terminal
                 //robot.driveAtDirection(270, 2000, .3);
                 //move to "right" zone
-                robot.driveAtDirection(90, 2000, .3);
-                sleep(1000);
+                robot.driveAtDirection(270, 2000, .3);
+                robot.driveAtDirection(90, 4000, .3);
                 //park in zone
                 robot.driveAtDirection(0, 1500, .3);
                 break;
@@ -184,18 +186,18 @@ public class RedCamera extends LinearOpMode
 
         }
     }
-        void tagToTelemetry(AprilTagDetection detection)
-        {
-            telemetry.addLine(String.format("\nDetected tag ID=%d", detection.id));
-            if (detection.id == 1) {
-                telemetry.addLine(String.format("Left"));
-            }
-            else if (detection.id == 2){
-                telemetry.addLine(String.format("Middle"));
-            }
-            else if (detection.id == 3){
-                telemetry.addLine(String.format("Right"));
-            }
+    void tagToTelemetry(AprilTagDetection detection)
+    {
+        telemetry.addLine(String.format("\nDetected tag ID=%d", detection.id));
+        if (detection.id == 1) {
+            telemetry.addLine(String.format("Left"));
+        }
+        else if (detection.id == 2){
+            telemetry.addLine(String.format("Middle"));
+        }
+        else if (detection.id == 3){
+            telemetry.addLine(String.format("Right"));
+        }
         telemetry.addLine(String.format("\nDetected tag ID=%d", detection.id));
         telemetry.addLine(String.format("Translation X: %.2f feet", detection.pose.x*FEET_PER_METER));
         telemetry.addLine(String.format("Translation Y: %.2f feet", detection.pose.y*FEET_PER_METER));
