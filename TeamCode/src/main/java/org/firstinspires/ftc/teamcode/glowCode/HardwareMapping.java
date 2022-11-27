@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.glowCode;
 
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
-
 import com.acmerobotics.roadrunner.util.Angle;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -22,6 +20,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.util.AxesSigns;
+import org.firstinspires.ftc.teamcode.util.AxisDirection;
 import org.firstinspires.ftc.teamcode.util.BNO055IMUUtil;
 
 import org.openftc.easyopencv.OpenCvCamera;
@@ -63,7 +62,10 @@ public class HardwareMapping {
 
         // TODO: if your hub is mounted vertically, remap the IMU axes so that the z-axis points
         // upward (normal to the floor) using a command like the following:
-        BNO055IMUUtil.remapAxes(imu, AxesOrder.XYZ, AxesSigns.NPN);
+        //BNO055IMUUtil.remapAxes(imu, AxesOrder.XYZ, AxesSigns.NPN);
+        BNO055IMUUtil.remapZAxis(imu, AxisDirection.NEG_X);
+        BNO055IMUUtil.remapZAxis(imu, AxisDirection.NEG_Y);
+
 
         leftFront = hwMap.get(DcMotorEx.class, "leftFront");
         leftRear = hwMap.get(DcMotorEx.class, "leftRear");
@@ -92,6 +94,7 @@ public class HardwareMapping {
         //claw.setPosition(0);
 
         WebcamName webcamName = hwMap.get(WebcamName.class, "Webcam 1");
+
 
     }
 

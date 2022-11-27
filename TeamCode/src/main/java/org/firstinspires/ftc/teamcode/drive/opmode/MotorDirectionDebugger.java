@@ -46,7 +46,10 @@ public class MotorDirectionDebugger extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
+
+        Telemetry DashboardTelemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
+        telemetry.update();
+        DashboardTelemetry.update();
 
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
